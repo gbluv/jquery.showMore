@@ -3,12 +3,11 @@
  *  ---------------------------------------------
  *
  *  @version 0.0.1
- *  @since   03.20.2013 
  *
  *  Example:
  *
  *  $(".comment").show_more({
- *	  showChar: 200,
+ *    showChar: 200,
  *    ellipsestext: "...",
  *    moretext: "more",
  *    lesstext: "less"
@@ -33,19 +32,21 @@
         $element.each(function () {
             var content = $(this).html();
 
-            if (content.length > showChar) {
-
- 				var more_content = $("<span class='morecontent'></span>");
-
- 		    	$(more_content).append($("<span></span>").html(content.substr(showChar - 1, content.length - showChar)));
-
- 				$(more_content).append($("<a class='morelink' style='cursor: pointer'></a>").text(moretext));
-
- 				$(this)
-					.html(content.substr(0, showChar)) 
-					.append($("<span class='moreellipses'></span>").html(ellipsestext + "&nbsp;")) 
-					.append($(more_content)); 
-			}
+            	if (content.length > showChar) {
+			var more_content = $("<span class='morecontent'></span>");
+	   		$(more_content)
+	   			.append($("<span></span>")
+	   			.html(content.substr(showChar - 1, content.length - showChar)));
+	   			
+	   		$(more_content)
+	   			.append($("<a class='morelink' style='cursor: pointer'></a>")
+	   			.text(moretext));
+		
+			$(this)
+				.html(content.substr(0, showChar)) 
+				.append($("<span class='moreellipses'></span>").html(ellipsestext + "&nbsp;")) 
+				.append($(more_content)); 
+		}
         });
 
 
